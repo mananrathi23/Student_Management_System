@@ -1,0 +1,217 @@
+.fade-in {
+  animation: fadeIn 4.75s forwards;
+}
+
+.k{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 12pc;
+    margin-right: 12pc;
+}
+
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+#zoomButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.kt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -83px;
+    margin-right: -38px;
+    margin-left: -151px;
+    margin-right: -103px;
+}
+
+.mae{
+    margin-right: 26px;
+}
+
+h3{
+ color :red ;
+}
+
+.fade-in {
+    animation: fadeIn 1.75s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@keyframes fadeIn{
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+.se{
+    border: 1px solid yellowgreen; 
+    color: rgb(35, 80, 120);
+    padding: 10px; 
+    border-radius: 5px; 
+    display: flex;
+    align-items: center;
+}
+
+.sort-container {
+    margin-left: 28pc;
+}
+
+
+.custom-dismiss-button {
+    position: absolute;
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+    z-index: 1; /* Ensure it is above other elements */
+    background-color: rgb(213, 53, 53); /* Red background color */
+      color: white; /* White text color */
+      border: none; /* Remove default border */
+      border-radius: 50%; /* Make it round if desired */
+      width: 30px; /* Width of the button */
+      height: 30px; /* Height of the button */
+      display: flex; /* Center the icon */
+      align-items: center; /* Center the icon */
+      justify-content: center; /* Center the icon */
+  }
+
+
+
+  .custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition-property: all 1s;
+  }
+
+  
+  .custom-modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+  }
+  
+  .custom-modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+  }
+  
+  .custom-modal-title {
+    font-size: 1.25rem;
+    color: #4CAF50; /* Green color */
+  }
+  
+  .custom-modal-body {
+    margin-top: 10px;
+    color: #333;
+    text-align: center;
+  }
+  
+
+
+  .pd{
+    margin-left: 568px;
+    margin-bottom: -3px;
+    margin-top: 82px;
+    margin-right: -67pc;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+  
+  .custom-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transition: visibility 0.5s ease-out;
+  }
+  
+  .custom-modal.show {
+    display: block; /* Show the modal */
+  }
+  
+  .custom-modal-dialog {
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .custom-modal.exit .custom-modal-dialog {
+    animation: slideOut 0.5s ease-out;
+  }
+  
+
+
+.band{
+    transition-property: background-color;
+    transition-duration:150ms;
+    padding: 5px;
+    border-radius: 7px;
+    background-color: lavenderblush;
+}
+
+.band:hover{
+    background-color: red;
+}

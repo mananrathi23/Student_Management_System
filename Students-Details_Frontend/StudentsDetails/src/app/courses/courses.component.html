@@ -1,0 +1,104 @@
+<br>
+<br>
+<form class="k">
+    <div class="form-group">
+        <label for="course_name"  [ngStyle] ="{color : 'blue'}" style="margin-left: -47px;" >Course Name
+            <span class = "text-danger"> *</span>
+        </label>
+        <input type="text" [ngStyle] ="{color : 'blue'}" [(ngModel)]="Course.course_name" name="course_name" id="course_name" class="form-control" style="margin-bottom: 1px; margin-left: -52px;">
+        <!-- <div [hidden]="toShowN" style="color:red;  margin-left: -48px;margin-top: -4px;">Enter The Correct Name</div> -->
+        <div [hidden]="toShowName" style="color:red;  margin-left: -48px;margin-top: -4px;">Enter The Name</div>
+    </div>
+    <div class="form-group">
+        <label for="course_code" [ngStyle] ="{color : 'blue'}" style =  "margin-left: 9px;">Course Code
+            <span class = "text-danger"> *</span>
+        </label>
+        <input type="text"  [(ngModel)]="Course.course_code" name="course_code" id="course_code" class="form-control" style="margin-bottom: 53px; margin-left: 9px;">
+        <div [hidden]="toShowF" style="color:red;  margin-left: 13px;margin-top: -52px;">Enter The Code</div>
+        <!-- <div [hidden]="toShowCode" style="color:red;  margin-left: -48px;margin-top: -4px;">Enter The Correct Code</div> -->
+    </div>
+
+    <div class="form-group" style ="margin-left: 64px;">
+        <label for="subject" [ngStyle] ="{color : 'blue'}" >Course Year
+            <span class = "text-danger"> *</span>
+        </label>
+
+    <select [(ngModel)]="Course.year"  name="year" id="year" class="form-control" style="margin-bottom: 53px;">
+        <option value="1">1 Year</option>
+        <option value="2">2 Year</option>
+        <option value="3">3 Year</option>
+        <option value="4">4 Year</option>
+    </select>
+</div>
+    
+        <!-- <div class="form-check" style="margin-top: 2pc;">
+            <input class="form-check-input" type="checkbox" name="course_status" [(ngModel)]="Course.course_status" role="switch" id="course_status">
+            <label class="form-check-label" for="course_status">Active</label>
+        </div> -->
+
+    <div>
+    <button (click)="onClick()" type="button" class="btn btn-success" style = "margin-left: 52px;margin-bottom: 56px;margin-top: 19px;">{{button_name}}</button>
+    <button type = "button" class = "btn btn-danger" (click) = "reset()" style = "margin-left: 9px;margin-bottom: 56px;margin-top: 19px;">Reset</button>
+    </div>
+</form>
+
+<!-- <ul>
+    <li *ngFor="let n of searchStudent">{{ n.name[n] }}</li>
+  </ul> -->
+
+<div class="row-9 kt">
+  <div class="col-7">
+      <div class="table-responsive">
+        <div class = "se">
+            <input type = "text" placeholder="Search " (input) = "searchBar()" [(ngModel)] = "searchQuery">
+            </div>
+            <div (click) = "showText()" *ngIf="isTextSHow" class ="fade-in" style="color:red ;display:flex;justify-content: center;">Course is mapped with Student</div>
+
+          <table class="table table-hover" >
+              <thead class="thead-dark d" *ngIf="!(searchCourse.length === 0)" >
+                  <tr class="table-info">
+                      <th>Course Name</th>
+                      <th>Course Code</th>
+                      <th>Year</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+
+                  <tr *ngFor="let s of searchCourse" class = "table-danger" >
+                      <td>{{ s.course_name }}</td>
+                        <td>{{ s.course_code }}</td> 
+                        <td>{{s.year}}</td>
+                      <td>
+                            <button (click)="updateClick(s)" type="button" class="btn btn-info mae">Edit</button>
+                            <button  type="button" class="btn btn-danger"data-toggle="modal" data-target="#exampleModal" (click) = "onStore(s.id)">Delete</button>
+                          </td>
+                    </tr>
+                  <tr *ngIf="searchCourse.length === 0" class="fade-in" > 
+                    <td colspan="6" class="text-center" style="color: red;">No results found</td> 
+                </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="close custom-dismiss-button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        Do You want to Delete ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" >Close</button>
+          <button type="button" class=" band" (click)="deleteClick(idStore)" data-dismiss="modal" >Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

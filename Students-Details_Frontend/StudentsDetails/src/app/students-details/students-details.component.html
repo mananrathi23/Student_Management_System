@@ -1,0 +1,155 @@
+
+<form style ="margin-left: -1px;margin-right: 95px;">
+    <div class="form-row align-items-center row p">
+        <div class="form-group col-2">
+            <label for="firstname" [ngStyle]="{color:'blue'}" >First Name
+                <span class = "text-danger"> *</span>
+            </label>
+            <input type="text" [(ngModel)]="studentsDetails.firstname" name="firstname" id="firstname" class="form-control">
+            <div [hidden] = "toShowFirst" style="color:red;font-size: 12px;" >Enter the Correct First Name</div>
+        </div>
+        <div class="form-group col-2">
+            <label for="lastname" [ngStyle]="{color:'blue'}">Last Name
+                <span class = "text-danger"> *</span>
+            </label>
+            <input type="text" [(ngModel)]="studentsDetails.lastname" name="lastname" id="lastname" class="form-control">
+            <div [hidden] = "toShowLast" style="color:red;font-size: 12px;" >Enter the Correct Last Name</div>
+        </div>
+        <div class="form-group col-2">
+            <label for="gaurdianname" [ngStyle]="{color:'blue'}">Gaurdian Name
+                <span class = "text-danger"> *</span>
+            </label>
+            <input type="text" [(ngModel)]="studentsDetails.gaurdianname" name="gaurdianname" id="gaurdianname" class="form-control">
+            <div [hidden] = "toShowGaurdian" style="color:red;font-size: 10px;" >Enter the Correct Gaurdian Name</div>
+        </div>
+        <div class="form-group col-2 c">
+            <label for="gaurdianphoneno"  [ngStyle]="{color:'blue'}">Gaurdian Phone No
+                <span class = "text-danger"> *</span>
+            </label>
+            <input type="text" [(ngModel)]="studentsDetails.gaurdianphoneno" name="gaurdianphoneno" id="gaurdianphoneno" class="form-control" maxlength="10">
+            <div [hidden] = "toShowPhone" style="color:red;font-size: 12px;" >Enter the Correct Phone No.</div>
+            <div [hidden] = "toShowPh" style="color:red;font-size: 12px;" >Already in Use</div>
+            <div [hidden] = "updatePhoneNo" style="color:red;font-size: 12px;" >Already in Use</div>
+        </div>
+        <div class="form-group col-2">
+            <label for="address"  [ngStyle]="{color:'blue'}">Address
+                <span class = "text-danger"> *</span>
+            </label>
+            <input type="text" [(ngModel)]="studentsDetails.address" name="address" id="address" class="form-control">
+            <div [hidden] = "toShowAddress" style="color:red;font-size: 12px;" >Enter the Correct Address</div>
+        </div>
+
+        <div class="form-group col-2" >
+            <label for="subject" [ngStyle] ="{color : 'blue'}">Year
+                <span class = "text-danger"> *</span>
+            </label>
+        
+        <select name="year" id="year" class="form-control" [(ngModel)] = "studentsDetails.year">
+            <option value="1">1 Year</option>
+            <option value="2">2 Year</option>
+            <option value="3">3 Year</option>
+            <option value="4">4 Year</option>
+        </select>
+        </div>
+    
+        <div class="form-group col-2" style="display: flex;justify-content: space-evenly;margin-left: 56pc;">
+            <button  type="button" class="btn btn-success sb" (click)="onSave()" >{{button_name}}</button>
+            <button type = "button" class = "btn btn-danger" (click) = "resetDetails()" style = "margin-top: 25px;border-radius: -22px;">Reset</button>
+        </div>
+
+    </div>
+</form>
+
+<div class="box">
+  <input type="text" placeholder="Search" (input)="studentsDetailsSearchBar()" [(ngModel)]="SearchDetailsQuery">
+
+
+  <div class="sort-container" style ="margin-left: 28pc;">
+    <label for="sortAttribute" >Sort By:</label>
+    <select id="sortAttribute" (change)="sort($event)" style="margin-left: 5px;">
+      <option value="gaurdianname">Gaurdian Name</option>
+      <option value="firstname">First Name</option>
+    </select>
+
+    <label for="sortAttribute" style="margin-left: 12px;">Order:</label>
+    <select id="name" (change)="sorting($event)" style="margin-left: 5px;">
+      <option value="ascending">Ascending</option>
+      <option value="descending">Descending</option>
+    </select>
+    </div>
+  </div>
+
+  <div (click) = "showText()" *ngIf="isTextVisible" class="fade-in single-line-text" style="color: red;margin-left: 41pc;">Student is Mapped with Course</div>
+
+
+<div class="table-responsive k">
+    <table id="studentsTable"  class="table">
+        <thead class="thead-dark table-info t" *ngIf="!(SearchStudentsDetails.length === 0)">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gaurdian Name</th>
+                <th>Gaurdian Phone No:</th>
+                <th>Address</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of SearchStudentsDetails" class="table-danger item">
+                <td>{{i.firstname}}</td>
+                <td>{{i.lastname}}</td>
+                <td>{{i.gaurdianname}}</td>
+                <td>{{i.gaurdianphoneno}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.year}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger ss" (click)="onStoreid(i.id,i.firstname,i.lastname)"  data-toggle="modal" data-target="#exampleModal">Delete</button>
+                    <button type="button" class="btn btn-info" (click)="onUpdate(i)">Edit</button>
+                </td>
+            </tr>
+            <tr *ngIf="SearchStudentsDetails.length === 0" class="fade-in">
+                <td class="text-center" style="color:red;" colspan="6">No Such Details Matched</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="close custom-dismiss-button " data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          You Want To Delete {{idfirstname+' '+idlastname}} Details ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(idStorage)" data-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <span aria-hidden="true">&times;</span>
+        </div>
+        <div class="modal-body">
+          cannot delete Student Courses as it is Mapped with course ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(idStorage)" data-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

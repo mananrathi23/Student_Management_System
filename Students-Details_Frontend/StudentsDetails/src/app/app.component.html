@@ -1,0 +1,20 @@
+<nav class="navbar" style="background: aliceblue;">
+  <div class="container">
+      <a class="navbar-brand" [ngStyle]="{color:'blue'}">Student Management System</a>
+      <ul class="nav">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Students Details</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="Students-academics" routerLinkActive="active-link">Student Academics</a>
+          </li>
+          <li class = "nav-item">
+            <a class = "nav-link" routerLink="Courses" routerLinkActive="active-link">Courses</a>
+          </li>
+          <li class = "nav-item">
+            <a class = "nav-link" routerLink="student-course-mapping" routerLinkActive="active-link">Student Course Mapping</a>
+          </li>
+      </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,51 @@
+
+/* General Styles for Navbar Links */
+.nav-link {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #efd8d8; /* Light grey background */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover and active state */
+}
+
+/* Hover Effect */
+.nav-link:hover {
+    background-color: #cb95ba; /* Light blue background on hover */
+    color: #fff; /* White text color on hover */
+}
+
+/* Active Link Style */
+.active-link {
+    background-color: #e7bfd9; /* Steel blue background for active link */
+    color: #020202 !important; /* White text color for active link */
+    font-weight: bold; /* Bold text for active link */
+}
+
+/* Navbar Brand Style */
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: blue !important;
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Nav Item Styling */
+.nav-item {
+    list-style: none;
+}
+
+/* Nav List Styling */
+.nav {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
